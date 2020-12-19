@@ -1,0 +1,60 @@
+﻿<Window x:Class="CompraList_WPF.profileView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CompraList_WPF"
+        mc:Ignorable="d" Loaded="Window_Loaded"
+        Title="UserProfileView" Height="350" Width="500" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
+
+
+    <DockPanel Margin="20">
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal">
+            <TextBox Width="370" >Nombre Usuario</TextBox>
+            <Button Content="Registrar"></Button>
+        </StackPanel>
+
+        <ListView x:Name="lstp" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Columns="5" HorizontalAlignment="Stretch"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <UniformGrid>
+                        <Image Source="{Binding img}"></Image>
+                    </UniformGrid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <UniformGrid >
+            <!--<RadioButton >
+                <RadioButton.Background>
+                    <ImageBrush ImageSource="Imgenes/1.png"></ImageBrush>
+                </RadioButton.Background>
+            </RadioButton>-->
+            
+         
+             
+                <Image Source="Imgenes/2.png" Height="40" />
+                <Image Source="Imgenes/3.png" Height="40" />
+                <Image Source="Imgenes/4.png" Height="40" />
+                <Image Source="Imgenes/5.png" Height="40" />
+                <Image Source="Imgenes/6.png" Height="40" />
+                <Image Source="Imgenes/7.png" Height="40" />
+                <Image Source="Imgenes/8.png" Height="40" />
+                <Image Source="Imgenes/9.png" Height="40" />
+                <Image Source="Imgenes/10.png" Height="40" />
+                <Image Source="Imgenes/11.png" Height="40" />
+
+     
+            <!--<RadioButton>
+                <RadioButton.Content>
+                    
+                </RadioButton.Content>
+            </RadioButton>-->
+
+        </UniformGrid>
+    </DockPanel>
+</Window>
