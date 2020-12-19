@@ -55,21 +55,12 @@ namespace CompraList_WPF
             //listacontext.List_OrderBy();
 
             // context.Item_Add(txtnewItem.Text, txtuser.Text ); 
-            // txtnewItem.Text = null;
+            txtnewItem.Text = null;
             // context.UpdateLista();
             // context.Items_LoadAll();
         }
 
-        //private void StackPanel_MouseLeave(object sender, MouseEventArgs e)
-        //{
-        //    //if (lstItem.SelectedItem != null)
-        //    //{
-        //    //    // context.Item_Delete(lstItem.SelectedItem as Item);
-        //    //    var i = lstItem.SelectedItem as Item;
-        //    //    context.Item_Editar(i);
-        //    //}
-
-        //}
+      
         //public static System.Windows.TextDecorationCollection Strikethrough { get; }
         private void lstItem_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

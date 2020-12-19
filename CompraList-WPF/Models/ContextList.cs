@@ -87,7 +87,6 @@ namespace CompraList_WPF.Models
 
             ListItems = new ObservableCollection<Item>((from item in ListItems orderby item.Listo, item.Id descending select item).ToList());
 
-            //     UpdateLista?.Invoke();
         }
         public void Reset_AllItems(List<Item> items)
         {
@@ -161,14 +160,14 @@ namespace CompraList_WPF.Models
             HttpResponseMessage response = await client.PostAsync("/home/changestatus/" + item.Id, content);
 
             var result = await response.Content.ReadAsStringAsync();
-            //if (item.Listo)
-            //{
-            //    item.Estilo = "Strikethrough";
-            //}
-            //else
-            //{
-            //    item.Estilo = null;
-            //}
+            if (item.Listo)
+            {
+                item.Estilo = "Strikethrough";
+            }
+            else
+            {
+                item.Estilo = null;
+            }
             //if (!string.IsNullOrWhiteSpace(result))
             //{
             //    MessageBox.Show("Atención");

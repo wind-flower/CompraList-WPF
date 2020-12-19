@@ -1,19 +1,11 @@
-﻿<Window x:Class="CompraList_WPF.MainWindow"
-     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-     TextElement.FontWeight="Regular"
-     TextElement.FontSize="13"
-     TextOptions.TextFormattingMode="Ideal"
-     TextOptions.TextRenderingMode="Auto"
-     Background="{DynamicResource MaterialDesignPaper}"
-     FontFamily="{DynamicResource MaterialDesignFont}"        
+﻿<Window x:Class="CompraList_WPF.CompraList_View"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CompraList_WPF"
-        mc:Ignorable="d" Loaded="Window_Loaded"
-        Title="CompraList" Height="450" Width="800" Icon="Imgenes/logo.png">
+        mc:Ignorable="d"
+            Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <!--<Window.Resources>
         <Style x:Key="MaterialDesignToolToggleListBoxItem" TargetType="{x:Type ListBoxItem}">
             <Setter Property="Background" Value="Transparent"/>
@@ -129,12 +121,12 @@
     <!--<Window.Style>
         <Style TargetType="TextBlock">
             <Setter Property="TextDecorations" Value="Strikethrough"></Setter>
-        </Style>-->
+        </Style Margin="5 0 5 5">-->
     <!--</Window.Style>-->
     <!--<Viewbox>-->
-    <DockPanel Margin="5 0 5 5">
+    <DockPanel >
         <!--<Button DockPanel.Dock="Bottom" x:Name="btndelete" Click="btndelete_Click">Eliminar Item</Button>-->
-        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal"  Background="WhiteSmoke">
             <StackPanel Orientation="Horizontal" Margin="0 0 40 0">
                 <Border CornerRadius="75" BorderThickness="1" Height="40" Width="40" BorderBrush="WhiteSmoke">
                     <Border.Background>
@@ -151,44 +143,34 @@
             </StackPanel>
 
         </StackPanel>
-        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal"  Margin="80 0 0 15">
-            <TextBox  x:Name="txtnewItem" Width="620" FontSize="20" ></TextBox>
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal"  Margin="90 0 0 15">
+            <TextBox  x:Name="txtnewItem" Width="580" FontSize="20" ></TextBox>
             <Button x:Name="btnAddItem" Click="btnAddItem_Click" Style="{DynamicResource MaterialDesignFloatingActionDarkButton}" Height="30" Width="30">+</Button>
         </StackPanel>
         <ListBox DockPanel.Dock="Bottom" Name="lstItem" Width="600"  SelectionMode="Single" SelectionChanged="lstItem_SelectionChanged">
 
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <!--<materialDesign:Card Width="600" Height="35" Padding="0">-->
-                    <DockPanel  Width="565" >
-                        <CheckBox DockPanel.Dock="Right" Click="CheckBox_Click" Checked="CheckBox_Checked" 
-                                  Style="{DynamicResource MaterialDesignFlatPrimaryToggleButton}" Content="x">
-                            
-                        </CheckBox>
-                        <!--<CheckBox IsChecked="{Binding Listo}"  Unchecked="CheckBox_Unchecked" Checked="CheckBox_Checked"   Style="{DynamicResource MaterialDesignActionToggleButton}" DockPanel.Dock="Left" IsManipulationEnabled="False" IsEnabled="False">
 
-                        </CheckBox>-->
+                    <DockPanel  Width="580" >
+                        <Button x:Name="btnDelete" Click="btnDelete_Click" Content="x"></Button>
+                        <CheckBox IsChecked="{Binding Listo}" Name="chkListo" Unchecked="chkListo_Unchecked" Checked="chkListo_Checked"   Style="{DynamicResource MaterialDesignActionToggleButton}" DockPanel.Dock="Left"></CheckBox>
                         <StackPanel Orientation="Vertical"  HorizontalAlignment="Left" DockPanel.Dock="Left" CanVerticallyScroll="True" Margin="0" >
 
 
-                            <TextBlock FontSize="20" Name="txtname" TextDecorations="{Binding Estilo}" FontWeight="Bold"  Text="{Binding Nombre}" Margin="10 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center">
-
-                            </TextBlock>
+                            <TextBlock FontSize="20" Name="txtname" TextDecorations="{Binding Estilo}" FontWeight="Bold"  Text="{Binding Nombre}" Margin="10 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
                             <Border CornerRadius="15" Background="Transparent" Margin="20 0 0 0" Height="20" HorizontalAlignment="Left">
 
-                                <Label Content="{Binding QuienAgrego}" FontSize="10"  HorizontalAlignment="Center" VerticalAlignment="Top">
-
-                                </Label>
+                                <Label Content="{Binding QuienAgrego}" FontSize="10"  HorizontalAlignment="Center" VerticalAlignment="Top"></Label>
                             </Border>
 
                         </StackPanel>
 
                     </DockPanel>
-                 
+    
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
     </DockPanel>
 
-    <!--</Viewbox>-->
 </Window>

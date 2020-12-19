@@ -190,12 +190,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CompraList_View.xaml.cs">
+      <DependentUpon>CompraList_View.xaml</DependentUpon>
+    </Compile>
     <Compile Include="profileView.xaml.cs">
       <DependentUpon>profileView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UserProfileView.xaml.cs">
       <DependentUpon>UserProfileView.xaml</DependentUpon>
     </Compile>
+    <Page Include="CompraList_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -268,6 +275,11 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Imgenes\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imgenes\logo-nombre.png" />
+    <Resource Include="Imgenes\logo.png" />
+    <Resource Include="Imgenes\nombre.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets')" />

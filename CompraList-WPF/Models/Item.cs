@@ -33,7 +33,23 @@ namespace CompraList_WPF.Models
             get { return quienAgrego; }
             set { quienAgrego = value; Actualizar(); }
         }
+        private string estilo;
 
-  
+        public string Estilo
+        {
+            get {
+                if (Listo)
+                {
+                    return Estilo = "Strikethrough";
+                }
+                else
+                {
+                    return Estilo = null;
+                }
+            }
+            set { estilo = value; }
+        }
+
+
     }
 }
