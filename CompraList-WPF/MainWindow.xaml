@@ -133,7 +133,7 @@
     <!--</Window.Style>-->
     <!--<Viewbox>-->
     <DockPanel Margin="5 0 5 5">
-      
+        <Button DockPanel.Dock="Bottom" x:Name="btndelete" Click="btndelete_Click">Eliminar Item</Button>
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
             <StackPanel Orientation="Horizontal">
                 <Border CornerRadius="75" BorderThickness="1" Height="40" Width="40" BorderBrush="Black">
@@ -181,11 +181,11 @@
                                   Style="{DynamicResource MaterialDesignFlatPrimaryToggleButton}" Content="x">
                             
                         </CheckBox>-->
-                        <CheckBox IsChecked="{Binding Listo}"  Checked="CheckBox_Checked"   Style="{DynamicResource MaterialDesignActionToggleButton}" DockPanel.Dock="Left"></CheckBox>
+                        <CheckBox IsChecked="{Binding Listo}"  Unchecked="CheckBox_Unchecked" Checked="CheckBox_Checked"   Style="{DynamicResource MaterialDesignActionToggleButton}" DockPanel.Dock="Left"></CheckBox>
                         <StackPanel Orientation="Vertical"  HorizontalAlignment="Left" DockPanel.Dock="Left" CanVerticallyScroll="True" Margin="0" >
                             
                             
-                            <TextBlock FontSize="20" Name="txtname"    Text="{Binding Nombre}" Margin="10 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+                            <TextBlock FontSize="20" Name="txtname"  FontWeight="Bold"  Text="{Binding Nombre}" Margin="10 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
                         <Border CornerRadius="15" Background="Transparent" Margin="20 0 0 0" Height="20" HorizontalAlignment="Left">
 
                                 <Label Content="{Binding QuienAgrego}" FontSize="10"  HorizontalAlignment="Center" VerticalAlignment="Top"></Label>

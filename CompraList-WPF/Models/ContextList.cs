@@ -38,7 +38,8 @@ namespace CompraList_WPF.Models
 
 
 
-        public void HubConnection()
+    //    public void HubConnection()
+   public ContextList()
         {
             url = "https://compralist.itesrc.net/";
             ListItems = new ObservableCollection<Item> { };
@@ -53,21 +54,18 @@ namespace CompraList_WPF.Models
                 await hubConnection.StartAsync();
             };
 
-            hubConnection.On<IEnumerable<Item>>("ReceiveMessage", (list) => {  LoadData(); });
+            hubConnection.On<IEnumerable<Item>>("ReceiveMessage", (list) => { datos(); });
 
-            LoadData();
-            //ListItems = new ObservableCollection<Item>
-            //{
-            //    new Item { Id = 1, Listo = false, Nombre = "Queso", Quienloagrego = "Judith" },
-            //    new Item { Id = 2, Listo = false, Nombre = "Pera", Quienloagrego = "Tavo" },
-            //    new Item { Id = 3, Listo = false, Nombre = "Chocolates", Quienloagrego = "Harry" },
-            //    new Item { Id = 4, Listo = true, Nombre = "Papa", Quienloagrego = "Mayra" },
-            //    new Item { Id = 5, Listo = true, Nombre = "Pizza", Quienloagrego = "Alejandra" }
-            //};
+            datos();
+
            List_OrderBy();
         }
 
-        public async void LoadData()
+        public async void datos()
+        {
+            await LoadData();
+        }
+        public async Task LoadData()
         {
             HttpClient httpClient = new HttpClient();
 
@@ -75,8 +73,6 @@ namespace CompraList_WPF.Models
 
             json.EnsureSuccessStatusCode();
             List<Item> lista = JsonConvert.DeserializeObject<List<Item>>(await json.Content.ReadAsStringAsync());
-            //ItemLista = new List<Item>();
-            //ItemLista = lista.OrderByDescending(x => x.Listo).ToList();
 
          Reset_AllItems(lista);
         }
