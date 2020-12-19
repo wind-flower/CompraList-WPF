@@ -133,7 +133,7 @@
     <!--</Window.Style>-->
     <!--<Viewbox>-->
     <DockPanel Margin="5 0 5 5">
-        <Button DockPanel.Dock="Bottom" x:Name="btndelete" Click="btndelete_Click">Eliminar Item</Button>
+        <!--<Button DockPanel.Dock="Bottom" x:Name="btndelete" Click="btndelete_Click">Eliminar Item</Button>-->
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
             <StackPanel Orientation="Horizontal">
                 <Border CornerRadius="75" BorderThickness="1" Height="40" Width="40" BorderBrush="Black">
@@ -147,12 +147,12 @@
             </StackPanel>
             <Label  FontSize="35" DockPanel.Dock="Top" HorizontalAlignment="Center"
                    VerticalAlignment="Center" Width="566" HorizontalContentAlignment="Center">CompraList</Label>
-           
-        <!--<ToggleButton x:Name="tbtnmode"  Checked="tbtnmode_Checked" Unchecked="tbtnmode_Unchecked" Style="{DynamicResource MaterialDesignSwitchToggleButton}" Width="38"></ToggleButton>-->
+
+            <!--<ToggleButton x:Name="tbtnmode"  Checked="tbtnmode_Checked" Unchecked="tbtnmode_Unchecked" Style="{DynamicResource MaterialDesignSwitchToggleButton}" Width="38"></ToggleButton>-->
         </StackPanel>
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal"  Margin="80 0 0 15">
             <TextBox  x:Name="txtnewItem" Width="620" FontSize="20" ></TextBox>
-            <Button x:Name="btnAddItem" Click="btnAddItem_Click" Style="{DynamicResource MaterialDesignFloatingActionDarkButton}" Height="30" Width="30">+</Button>   
+            <Button x:Name="btnAddItem" Click="btnAddItem_Click" Style="{DynamicResource MaterialDesignFloatingActionDarkButton}" Height="30" Width="30">+</Button>
         </StackPanel>
         <ListBox DockPanel.Dock="Bottom" Name="lstItem" Width="600"  SelectionMode="Single" SelectionChanged="lstItem_SelectionChanged">
             <!--<ListBox.ItemContainerStyle>
@@ -177,19 +177,25 @@
                 <DataTemplate>
                     <!--<materialDesign:Card Width="600" Height="35" Padding="0">-->
                     <DockPanel  Width="580" >
-                        <!--<CheckBox DockPanel.Dock="Right" Checked="CheckBox_Checked" 
+                        <CheckBox DockPanel.Dock="Right" Click="CheckBox_Click" Checked="CheckBox_Checked" 
                                   Style="{DynamicResource MaterialDesignFlatPrimaryToggleButton}" Content="x">
                             
-                        </CheckBox>-->
-                        <CheckBox IsChecked="{Binding Listo}"  Unchecked="CheckBox_Unchecked" Checked="CheckBox_Checked"   Style="{DynamicResource MaterialDesignActionToggleButton}" DockPanel.Dock="Left"></CheckBox>
-                        <StackPanel Orientation="Vertical"  HorizontalAlignment="Left" DockPanel.Dock="Left" CanVerticallyScroll="True" Margin="0" >
-                            
-                            
-                            <TextBlock FontSize="20" Name="txtname"  FontWeight="Bold"  Text="{Binding Nombre}" Margin="10 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
-                        <Border CornerRadius="15" Background="Transparent" Margin="20 0 0 0" Height="20" HorizontalAlignment="Left">
+                        </CheckBox>
+                        <CheckBox IsChecked="{Binding Listo}"  Unchecked="CheckBox_Unchecked" Checked="CheckBox_Checked"   Style="{DynamicResource MaterialDesignActionToggleButton}" DockPanel.Dock="Left" IsManipulationEnabled="False" IsEnabled="False">
 
-                                <Label Content="{Binding QuienAgrego}" FontSize="10"  HorizontalAlignment="Center" VerticalAlignment="Top"></Label>
-                        </Border>
+                        </CheckBox>
+                        <StackPanel Orientation="Vertical"  HorizontalAlignment="Left" DockPanel.Dock="Left" CanVerticallyScroll="True" Margin="0" >
+
+
+                            <TextBlock FontSize="20" Name="txtname"  FontWeight="Bold"  Text="{Binding Nombre}" Margin="10 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center">
+
+                            </TextBlock>
+                            <Border CornerRadius="15" Background="Transparent" Margin="20 0 0 0" Height="20" HorizontalAlignment="Left">
+
+                                <Label Content="{Binding QuienAgrego}" FontSize="10"  HorizontalAlignment="Center" VerticalAlignment="Top">
+
+                                </Label>
+                            </Border>
 
                             <!--<Button Background="Transparent" BorderThickness="0" Click="Button_Click"
                                 DockPanel.Dock="Right" HorizontalAlignment="Stretch" VerticalContentAlignment="Center"
@@ -199,10 +205,12 @@
 
                                     <Label FontSize="30">x</Label>
                                 </Viewbox>
-                                --><!--<Image Source="Imgenes/delete.png"></Image>--><!--
+                                -->
+                            <!--<Image Source="Imgenes/delete.png"></Image>-->
+                            <!--
                             </Button>-->
                         </StackPanel>
-                      
+
                     </DockPanel>
                     <!--</materialDesign:Card>-->
                 </DataTemplate>

@@ -14,7 +14,7 @@ using Newtonsoft.Json;
 
 namespace CompraList_WPF.Models
 {
- public   class ContextList : INotifyPropertyChanged
+    public class ContextList : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         void Actualizar([CallerMemberName] string nombre = "")
@@ -24,8 +24,9 @@ namespace CompraList_WPF.Models
         public string url { get; set; }
 
         public HubConnection hubConnection;
+        public event Action ListUpdated;
         //public event Action UpdateLista;
-       
+
         public string Username { get; set; }
 
         private ObservableCollection<Item> listItems;
@@ -38,8 +39,8 @@ namespace CompraList_WPF.Models
 
 
 
-    //    public void HubConnection()
-   public ContextList()
+        //    public void HubConnection()
+        public ContextList()
         {
             url = "https://compralist.itesrc.net/";
             ListItems = new ObservableCollection<Item> { };
@@ -58,7 +59,7 @@ namespace CompraList_WPF.Models
 
             datos();
 
-           List_OrderBy();
+            List_OrderBy();
         }
 
         public async void datos()
@@ -74,7 +75,10 @@ namespace CompraList_WPF.Models
             json.EnsureSuccessStatusCode();
             List<Item> lista = JsonConvert.DeserializeObject<List<Item>>(await json.Content.ReadAsStringAsync());
 
-         Reset_AllItems(lista);
+            Reset_AllItems(lista);
+
+            ListUpdated?.Invoke();
+            //Reset_AllItems(lista);
         }
 
         public void List_OrderBy()
@@ -89,7 +93,7 @@ namespace CompraList_WPF.Models
         {
             ListItems = new ObservableCollection<Item>((from item in items orderby item.Listo, item.Id descending select item).ToList());
         }
-   
+
 
         public async void Item_Add(string itemcontent, string username)
         {
@@ -168,11 +172,11 @@ namespace CompraList_WPF.Models
             //if (!string.IsNullOrWhiteSpace(result))
             //{
             //    MessageBox.Show("Atención");
-        
+
             //}
             //else
             //{
-                await hubConnection.InvokeAsync("SyncronizeItems");
+            await hubConnection.InvokeAsync("SyncronizeItems");
             //}
         }
         public async void Item_Delete(Item item)
@@ -193,14 +197,14 @@ namespace CompraList_WPF.Models
             //if (!string.IsNullOrWhiteSpace(result))
             //{
             //    MessageBox.Show("Atención");
-       
+
             //}
             //else
             //{
-                await hubConnection.InvokeAsync("SyncronizeItems");
-          ///  }
+            await hubConnection.InvokeAsync("SyncronizeItems");
+            ///  }
         }
 
-        
+
     }
 }

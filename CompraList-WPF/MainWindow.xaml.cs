@@ -27,13 +27,21 @@ namespace CompraList_WPF
         ContextList listacontext = new ContextList();
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
+            listacontext.ListUpdated += Listacontext_ListUpdated;
             //  listacontext.HubConnection();
             await Cargardatos();
            lstItem.ItemsSource = null;
             lstItem.ItemsSource = listacontext.ListItems;
             listacontext.List_OrderBy();
         }
+
+        private void Listacontext_ListUpdated()
+        {
+            //throw new NotImplementedException();
+            lstItem.ItemsSource = null;
+            lstItem.ItemsSource = listacontext.ListItems;
+        }
+
         async Task Cargardatos()
         {
             await listacontext.LoadData();
@@ -42,9 +50,9 @@ namespace CompraList_WPF
         {
            listacontext.Item_Add(txtnewItem.Text, lbluser.Content.ToString());
             // await Cargardatos();
-            lstItem.ItemsSource = null;
-            lstItem.ItemsSource = listacontext.ListItems;
-            listacontext.List_OrderBy();
+            //lstItem.ItemsSource = null;
+            //lstItem.ItemsSource = listacontext.ListItems;
+            //listacontext.List_OrderBy();
 
             // context.Item_Add(txtnewItem.Text, txtuser.Text ); 
             // txtnewItem.Text = null;
@@ -78,6 +86,19 @@ namespace CompraList_WPF
             //    //   var i = lstItem.SelectedItem as Item;
             //    //  MessageBox.Show($"{i.Nombre} Eliminado");
             //}
+            if (lstItem.SelectedItem != null)
+            {
+                var i = lstItem.SelectedItem as Item;
+
+                //    context.Item_Editar(i);
+
+                listacontext.Item_Complete(i, lbluser.Content.ToString());
+                //lstItem.ItemsSource = null;
+                //lstItem.ItemsSource = listacontext.ListItems;
+                //listacontext.List_OrderBy();
+                //   var i = lstItem.SelectedItem as Item;
+                //  MessageBox.Show($"{i.Nombre} Eliminado");
+            }
         }
     
         //private void tbtnmode_Checked(object sender, RoutedEventArgs e)
@@ -110,9 +131,9 @@ namespace CompraList_WPF
                 //    context.Item_Editar(i);
 
                 listacontext.Item_Complete(i, lbluser.Content.ToString());
-                lstItem.ItemsSource = null;
-                lstItem.ItemsSource = listacontext.ListItems;
-                listacontext.List_OrderBy();
+                //lstItem.ItemsSource = null;
+                //lstItem.ItemsSource = listacontext.ListItems;
+                //listacontext.List_OrderBy();
                 //   var i = lstItem.SelectedItem as Item;
                 //  MessageBox.Show($"{i.Nombre} Eliminado");
             }
@@ -125,9 +146,9 @@ namespace CompraList_WPF
                 // context.Item_Delete(lstItem.SelectedItem as Item);
 
                 listacontext.Item_Delete(lstItem.SelectedItem as Item);
-                lstItem.ItemsSource = null;
-                lstItem.ItemsSource = listacontext.ListItems;
-                listacontext.List_OrderBy();
+                //lstItem.ItemsSource = null;
+                //lstItem.ItemsSource = listacontext.ListItems;
+                //listacontext.List_OrderBy();
             }
         }
 
@@ -140,12 +161,30 @@ namespace CompraList_WPF
                 //    context.Item_Editar(i);
 
                 listacontext.Item_Complete(i, lbluser.Content.ToString());
-                lstItem.ItemsSource = null;
-                lstItem.ItemsSource = listacontext.ListItems;
-                listacontext.List_OrderBy();
+                //lstItem.ItemsSource = null;
+                //lstItem.ItemsSource = listacontext.ListItems;
+                //listacontext.List_OrderBy();
                 //   var i = lstItem.SelectedItem as Item;
                 //  MessageBox.Show($"{i.Nombre} Eliminado");
             }
+        }
+
+        private void CheckBox_Click(object sender, RoutedEventArgs e)
+        {
+            var checkbox_clicked = e.OriginalSource as CheckBox;
+            Item item = checkbox_clicked.DataContext as Item;
+
+            listacontext.Item_Delete(item);
+            //if (lstItem.SelectedItem != null)
+            //{
+            //    // context.Item_Delete(lstItem.SelectedItem as Item);
+
+            //    listacontext.Item_Delete(lstItem.SelectedItem as Item);
+            //    //lstItem.ItemsSource = null;
+            //    //lstItem.ItemsSource = listacontext.ListItems;
+            //    //listacontext.List_OrderBy();
+            //}
+
         }
 
         //private void lstItem_Selected(object sender, RoutedEventArgs e)
