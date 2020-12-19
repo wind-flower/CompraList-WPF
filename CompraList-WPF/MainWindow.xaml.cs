@@ -27,20 +27,23 @@ namespace CompraList_WPF
         ContextList listacontext = new ContextList();
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            
+
+            listacontext.HubConnection();
            lstItem.ItemsSource = null;
             lstItem.ItemsSource = listacontext.ListItems;
-            //listacontext.List_OrderBy();
-           
+            listacontext.List_OrderBy();
         }
 
         private void btnAddItem_Click(object sender, RoutedEventArgs e)
         {
            listacontext.Item_Add(txtnewItem.Text, lbluser.Content.ToString());
-           // context.Item_Add(txtnewItem.Text, txtuser.Text ); 
-           // txtnewItem.Text = null;
-           // context.UpdateLista();
-           // context.Items_LoadAll();
+            lstItem.ItemsSource = null;
+            lstItem.ItemsSource = listacontext.ListItems;
+            listacontext.List_OrderBy();
+            // context.Item_Add(txtnewItem.Text, txtuser.Text ); 
+            // txtnewItem.Text = null;
+            // context.UpdateLista();
+            // context.Items_LoadAll();
         }
 
         //private void StackPanel_MouseLeave(object sender, MouseEventArgs e)
@@ -59,12 +62,11 @@ namespace CompraList_WPF
             if (lstItem.SelectedItem != null)
             {
                 // context.Item_Delete(lstItem.SelectedItem as Item);
-                var i = lstItem.SelectedItem as Item;
-
-                //    context.Item_Editar(i);
-
-                listacontext.Item_Complete(i, lbluser.Content.ToString());
-
+               
+                listacontext.Item_Delete(lstItem.SelectedItem as Item);
+                lstItem.ItemsSource = null;
+                lstItem.ItemsSource = listacontext.ListItems;
+                listacontext.List_OrderBy();
             }
         }
     
@@ -93,9 +95,16 @@ namespace CompraList_WPF
         {
             if (lstItem.SelectedItem != null)
             {
-                listacontext.Item_Delete(lstItem.SelectedItem as Item);
-             //   var i = lstItem.SelectedItem as Item;
-              //  MessageBox.Show($"{i.Nombre} Eliminado");
+                var i = lstItem.SelectedItem as Item;
+
+                //    context.Item_Editar(i);
+
+                listacontext.Item_Complete(i, lbluser.Content.ToString());
+                //lstItem.ItemsSource = null;
+                //lstItem.ItemsSource = listacontext.ListItems;
+                listacontext.List_OrderBy();
+                //   var i = lstItem.SelectedItem as Item;
+                //  MessageBox.Show($"{i.Nombre} Eliminado");
             }
         }
 

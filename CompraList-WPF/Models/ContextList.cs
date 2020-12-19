@@ -38,7 +38,7 @@ namespace CompraList_WPF.Models
 
 
 
-        public ContextList()
+        public void HubConnection()
         {
             url = "https://compralist.itesrc.net/";
             ListItems = new ObservableCollection<Item> { };
@@ -93,29 +93,10 @@ namespace CompraList_WPF.Models
         {
             ListItems = new ObservableCollection<Item>((from item in items orderby item.Listo, item.Id descending select item).ToList());
         }
-        public void Items_LoadAll()
-        {
-            List_OrderBy();
-     //      UpdateLista?.Invoke();
-           // Actualizar();
-        }
+   
 
         public async void Item_Add(string itemcontent, string username)
         {
-
-            //  int result = ListItems.Count > 0 ? ListItems.OrderByDescending(x => x.Id).FirstOrDefault().Id : 1;
-            //  Item item = new Item()
-            //  {
-            //      Id = result + 1,
-            //      Listo = false,
-            //      Nombre = itemcontent,
-            //      QuienAgrego = username
-
-            //  };
-
-
-            //  ListItems.Add(item);
-            //UpdateLista?.Invoke();
             HttpClient client = new HttpClient();
 
             client.BaseAddress = new Uri(url);
@@ -126,15 +107,15 @@ namespace CompraList_WPF.Models
             HttpResponseMessage response = await client.PostAsync("/home/createitem", content);
 
             var result = await response.Content.ReadAsStringAsync();
-
-            if (!string.IsNullOrWhiteSpace(result))
-            {
-                MessageBox.Show("Atención");
-            }
-            else
-            {
-                await hubConnection.InvokeAsync("SyncronizeItems");
-            }
+            await hubConnection.InvokeAsync("SyncronizeItems");
+            //if (!string.IsNullOrWhiteSpace(result))
+            //{
+            //    MessageBox.Show("Atención");
+            //}
+            //else
+            //{
+            //    await hubConnection.InvokeAsync("SyncronizeItems");
+            //}
         }
         //public void Item_Editar(Item newitems)
         //{
@@ -188,15 +169,15 @@ namespace CompraList_WPF.Models
             //{
             //    item.Estilo = null;
             //}
-            if (!string.IsNullOrWhiteSpace(result))
-            {
-                MessageBox.Show("Atención");
+            //if (!string.IsNullOrWhiteSpace(result))
+            //{
+            //    MessageBox.Show("Atención");
         
-            }
-            else
-            {
+            //}
+            //else
+            //{
                 await hubConnection.InvokeAsync("SyncronizeItems");
-            }
+            //}
         }
         public async void Item_Delete(Item item)
         {
@@ -213,15 +194,15 @@ namespace CompraList_WPF.Models
 
             var result = await response.Content.ReadAsStringAsync();
 
-            if (!string.IsNullOrWhiteSpace(result))
-            {
-                MessageBox.Show("Atención");
+            //if (!string.IsNullOrWhiteSpace(result))
+            //{
+            //    MessageBox.Show("Atención");
        
-            }
-            else
-            {
+            //}
+            //else
+            //{
                 await hubConnection.InvokeAsync("SyncronizeItems");
-            }
+          ///  }
         }
 
         

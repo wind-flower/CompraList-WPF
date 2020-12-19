@@ -177,13 +177,15 @@
                 <DataTemplate>
                     <!--<materialDesign:Card Width="600" Height="35" Padding="0">-->
                     <DockPanel  Width="580" >
-                        <CheckBox DockPanel.Dock="Right" Checked="CheckBox_Checked" 
+                        <!--<CheckBox DockPanel.Dock="Right" Checked="CheckBox_Checked" 
                                   Style="{DynamicResource MaterialDesignFlatPrimaryToggleButton}" Content="x">
                             
-                        </CheckBox>
+                        </CheckBox>-->
+                        <CheckBox IsChecked="{Binding Listo}"  Checked="CheckBox_Checked"   Style="{DynamicResource MaterialDesignActionToggleButton}" DockPanel.Dock="Left"></CheckBox>
                         <StackPanel Orientation="Vertical"  HorizontalAlignment="Left" DockPanel.Dock="Left" CanVerticallyScroll="True" Margin="0" >
-                            <!--<CheckBox IsChecked="{Binding Listo}"></CheckBox>-->
-                            <TextBlock FontSize="20" Name="txtname"    Text="{Binding Nombre}" Margin="10 0 0 0" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                            
+                            
+                            <TextBlock FontSize="20" Name="txtname"    Text="{Binding Nombre}" Margin="10 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
                         <Border CornerRadius="15" Background="Transparent" Margin="20 0 0 0" Height="20" HorizontalAlignment="Left">
 
                                 <Label Content="{Binding QuienAgrego}" FontSize="10"  HorizontalAlignment="Center" VerticalAlignment="Top"></Label>
